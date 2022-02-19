@@ -4,6 +4,8 @@ const notFound = (req, res, next) => {
   next(error);
 };
 
+// this will trigger only when ever an error is thrown as "throw new Error("message")"
+
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
   res.status(statusCode);

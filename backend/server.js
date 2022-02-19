@@ -5,6 +5,7 @@ import products from './data/products.js';
 import colors from 'colors';
 
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middlewares/errorMiddlewares.js';
 
 dotenv.config();
@@ -13,11 +14,14 @@ connectDB();
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('API is Running...');
 });
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 // middleware for checking if total url is wrong
 app.use(notFound);
